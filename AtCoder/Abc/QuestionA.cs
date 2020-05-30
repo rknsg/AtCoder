@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AtCoder.Abc
 {
-    //https://atcoder.jp/contests/abc141/tasks/abc141_a
+    //https://atcoder.jp/contests/abs/tasks/abc081_a
     public class QuestionA
     {
         public static void Main(string[] args)
@@ -18,18 +18,28 @@ namespace AtCoder.Abc
             string s = Console.ReadLine();
 
             // 整数の入力
-            long n = long.Parse(Console.ReadLine());
+            //long n = long.Parse(Console.ReadLine());
 
             // 文字列配列の入力
-            string[] inputStrArray = Console.ReadLine().Split(' ');
+            //string[] inputStrArray = Console.ReadLine().Split(' ');
 
             // 整数配列の入力
             var inputLongArray = Console.ReadLine().Split(' ').Select(i => long.Parse(i)).ToArray();
 
+            //1の数を数える 101 001 111
+            List<string> list = new List<string>();
+            var count = 0;
+            for(int i = 0; i < 3; i++)
+            {
 
+                if(s.Substring(i,1) == "1")
+                {
+                    count++;
+                }
 
+            }
 
-            string result = "";
+            string result = count.ToString();
 
             Console.WriteLine(result);
 
