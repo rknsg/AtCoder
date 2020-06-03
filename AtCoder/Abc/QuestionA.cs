@@ -9,7 +9,7 @@ namespace AtCoder.Abc
     //https://atcoder.jp/contests/abs/tasks/arc065_a
     public class QuestionA
     {
-        List<string> keyword = new List<string> { "dreamer", "dream", "eraser", "erase" };
+        static List<string> keyword = new List<string> { "dreamer", "dream", "eraser", "erase" };
 
         public static void Main(string[] args)
         {
@@ -19,26 +19,21 @@ namespace AtCoder.Abc
             // 文字列の入力
             string s = Console.ReadLine();
 
-            // 整数の入力
-            long n = long.Parse(Console.ReadLine());
-
-            // 文字列配列の入力
-            string[] inputStrArray = Console.ReadLine().Split(' ');
-
-            // 整数配列の入力
-            var inputLongArray = Console.ReadLine().Split(' ').Select(i => long.Parse(i)).ToArray();
-
-
-
-
-            string result = "";
+            var list = new List<string>() { s };
+            
+            while(list != null && list.Any())
+            {
+                list = CheckWords(list);
+            }
+                     
+            string result = (list == null)? "YES" : "NO";
 
             Console.WriteLine(result);
 
             Console.Out.Flush();
         }
 
-        public List<string> CheckWords(List<string> list)
+        public static List<string> CheckWords(List<string> list)
         {
             var ret = new List<string>();
 
@@ -49,7 +44,16 @@ namespace AtCoder.Abc
                 {
                     if (word.StartsWith(key))
                     {
-                        ret.Add(TrimWord(word, key));
+                        var trimmed = TrimWord(word, key);
+                        if(!string.IsNullOrEmpty(trimmed))
+                        {
+                            ret.Add(trimmed);
+                        }
+                        else
+                        {
+                            ret = null;
+                            break;
+                        }
                     }
                 }
             }
@@ -60,7 +64,7 @@ namespace AtCoder.Abc
 
         public static string TrimWord(string original, string word)
         {
-            return original.Substring(0, word.Length);
+            return original.Substring(word.Length);
         }
     }
 }
