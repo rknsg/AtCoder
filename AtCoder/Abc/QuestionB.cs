@@ -56,7 +56,7 @@ namespace AtCoder.Abc
                 y1 = y2;
             }
 
-            string result = ret? "YES":"NO";
+            string result = ret? "Yes":"No";
 
             Console.WriteLine(result);
 
